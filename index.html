@@ -10,7 +10,8 @@
 		/>
 	</head>
 	<body>
-		<div class="header">
+		
+		<div class="section header mb-5">
       <img
         src="Assets/images/text-Star_Wars_Actor_Holocron.png"
         alt="Star Wars Font Text of Star Wars Actor Holocron"
@@ -19,9 +20,9 @@
       />
     </div>
 		<main>
-			<div id="episodeChoice1" class="container">
-				<label for="star-wars-episode">Choose a Star Wars Films:</label>
-				<div class="select is-info">
+			<div id="episodeChoice1" class="container is-widescreen notification mb-5">
+				<div>Select a Star Wars Episode</div>
+				<div class="select is-info is-centered">
                     <select name="star-wars-episode" id="star-wars-episode">
       				 <option value="episode-1">Episode I-The Phantom Menace</option>
   					 <option value="episode-2">Episode II-Attack of the Clones</option>
@@ -30,27 +31,34 @@
 					 <option value="episode-5">Episode V-The Empire Strikes Back</option>
 					 <option value="episode-6">Episode VI-Return of the Jedi</option>
 					 
-					  </select>
+					</select>
 				</div>
 
 			</div>
 			
-			<div class="container">
+			<div class="container is-widescreen notification ">
 				<div id="characterChoice" onclick="toggleDropdown()">Select a Star Wars Character</div>
-				<select id="dropdown" onchange="selectCharacter(this.value)">
+				<div class="select is-info">	
+					<select id="dropdown" onchange="selectCharacter(this.value)">
 					<option value="" selected disabled>Select a character</option>
 					<option value="Luke Skywalker">Luke Skywalker</option>
 					<option value="Princess Leia">Princess Leia</option>
 					<option value="Han Solo">Han Solo</option>
 			
 				</select>
+				</div>
+				
 			</div>
 
-			<div id="newFacts">
-				<div class="row">
-					<div class="col"><p>New Facts</p></div>
+				<div class="container">
+					<div class="col" style="display: none;"><p>New Facts: Because you chose "Luke SkyWalker" we think you should check out this movie: 
+					    Output:
+						Movie Title
+						Year it was made?
+						Movie Reviews 
+					</p></div>
 				</div>
-			</div>
+			
 		</main>
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="./Assets/js/script.js"></script>
