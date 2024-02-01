@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Holocron</title>
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-  </head>
-  <body>
-    <div class="header">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+		/>
+	</head>
+	<body>
+		<div class="header">
       <img
         src="Assets/images/text-Star_Wars_Actor_Holocron.png"
         alt="Star Wars Font Text of Star Wars Actor Holocron"
@@ -19,20 +18,31 @@
         class="is-centered"
       />
     </div>
-    <main>
-      <div id="episodeChoice">
-        <div class="container"></div>
-      </div>
+		<main>
+			<div id="episodeChoice">
+				<div class="container">
+					<label for="star-wars-episode">Choose a Star Wars Films:</label>
 
-      <div id="episodeChoice"></div>
-      <div id="characterChoice"></div>
-      <div id="newFacts">
-        <div class="row">
-          <div class="col"><p>New Facts</p></div>
-        </div>
-      </div>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./Assets/js/script.js"></script>
-  </body>
+                    <select name="star-wars-episode" id="star-wars-episode">
+      				 <option value="episode-1">Episode I-The Phantom Menace</option>
+  					 <option value="episode-2">Episode II-Attack of the Clones</option>
+  					 <option value="episode-3">Episode III-Revenge of the Sith</option>
+  					 <option value="episode-4">Episode IV—A New Hope</option>
+					 <option value="episode-5">Episode V-The Empire Strikes Back</option>
+					 <option value="episode-6">Episode VI-Return of the Jedi</option>
+					 
+					  </select>
+				</div>
+
+			</div>
+			<div id="characterChoice"></div>
+			<div id="newFacts">
+				<div class="row">
+					<div class="col"><p>New Facts</p></div>
+				</div>
+			</div>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="./Assets/js/script.js"></script>
+	</body>
 </html>
