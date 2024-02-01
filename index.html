@@ -29,7 +29,18 @@
 				</div>
 
 			</div>
-			<div id="characterChoice"></div>
+			
+			<div class="container">
+				<div id="characterChoice" onclick="toggleDropdown()">Select a Star Wars Character</div>
+				<select id="dropdown" onchange="selectCharacter(this.value)">
+					<option value="" selected disabled>Select a character</option>
+					<option value="Luke Skywalker">Luke Skywalker</option>
+					<option value="Princess Leia">Princess Leia</option>
+					<option value="Han Solo">Han Solo</option>
+			
+				</select>
+			</div>
+
 			<div id="newFacts">
 				<div class="row">
 					<div class="col"><p>New Facts</p></div>
