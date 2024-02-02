@@ -4,21 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Holocron</title>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-		/>
-	</head>
-	<body>
-		
-		<div class="section header mb-5">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+        />
+    </head>
+    <body>
+        <div class="section header mb-5">
       <img class="image is-fullwidth"
         src="Assets/images/text-Star_Wars_Actor_Holocron.png"
         alt="Star Wars Font Text of Star Wars Actor Holocron"
         width="1500"
       />
     </div>
-		<main>
+        <main>
 			<div id="episodeChoice1" class="container is-widescreen notification mb-5">
 				<div>Our Star Wars Universe</div>
 				<div class="columns">
@@ -41,35 +40,45 @@
 						<img src = "./Assets/images/Episode VI.jpg">
 					</p>
 				</div>
-			
-			<div class="container is-widescreen notification ">
-				<div id="characterChoice" onclick="toggleDropdown()">Select a Star Wars Character</div>
-				<div class="select is-info is-widescreen">
-					<select id="dropdown" onchange="selectCharacter(this.value)">
-					<option value="" selected disabled>Select a character</option>
-					<option value="Luke Skywalker">Luke Skywalker</option>
-					<option value="Darth Vader">Darth Vader</option>
-					<option value="Princess Leia">Princess Leia</option>
-					<option value="Han Solo">Han Solo</option>
-					<option value="Yoda">Yoda</option>
-					<option value="R2-D2">R2-D2</option>
-					<option value="C-3PO">C-3PO</option>
-
-			</select>
-
-			</div>
-
-				<div class="container">
-					<div class="col" style="display: none;"><p>New Facts: Because you chose "Luke SkyWalker" we think you should check out this movie: 
-					    Output:
-						Movie Title
-						Year it was made?
-						Movie Reviews 
-					</p></div>
+				<div id="episodeChoice1" class="container is-widescreen notification mb-5">
+					<div>Select a Star Wars Episode</div>
+					<div class="select is-info is-centered">
+						<select name="star-wars-episode" id="star-wars-episode">
+						 <option value="" selected disabled>Select a film</option>
+						 <option value="episode-1">Episode I-The Phantom Menace</option>
+						 <option value="episode-2">Episode II-Attack of the Clones</option>
+						 <option value="episode-3">Episode III-Revenge of the Sith</option>
+						 <option value="episode-4">Episode IV-A New Hope</option>
+						 <option value="episode-5">Episode V-The Empire Strikes Back</option>
+						 <option value="episode-6">Episode VI-Return of the Jedi</option>
+						</select>
+					</div>
 				</div>
 			
-		</main>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script src="./Assets/js/script.js"></script>
-	</body>
-</html>
+				<div id="characterChoice" class="container is-widescreen notification " style="display: none;">
+					<div onclick="toggleDropdown()">Select a Star Wars Character</div>
+					<div class="select is-info is-widescreen">
+						<select id="dropdown" onchange="selectCharacter(this.value)">
+						<option value="" selected disabled>Select a character</option>
+						<option value="Luke Skywalker">Luke Skywalker</option>
+						<option value="Darth Vader">Darth Vader</option>
+						<option value="Princess Leia">Princess Leia</option>
+						<option value="Han Solo">Han Solo</option>
+						<option value="Yoda">Yoda</option>
+						<option value="R2-D2">R2-D2</option>
+						<option value="C-3PO">C-3PO</option>
+				</select>
+				</div>
+					<div class="container">
+						<div class="col" style="display: none;"><p>New Facts: Because you chose "Luke SkyWalker" we think you should check out this movie:
+							Output:
+							Movie Title
+							Year it was made?
+							Movie Reviews
+						</p></div>
+					</div>
+			</main>
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script src="./Assets/js/script.js"></script>
+		</body>
+	</html>
