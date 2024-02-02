@@ -33,17 +33,24 @@
         </div>
       </div>
 
-      <div class="container">
-        <div id="characterChoice" onclick="toggleDropdown()">
-          Select a Star Wars Character
-        </div>
-        <select id="dropdown" onchange="selectCharacter(this.value)">
-          <option value="" selected disabled>Select a character</option>
-          <option value="Luke Skywalker">Luke Skywalker</option>
-          <option value="Princess Leia">Princess Leia</option>
-          <option value="Han Solo">Han Solo</option>
-        </select>
-      </div>
+			</div>
+			
+			<div class="container is-widescreen notification ">
+				<div id="characterChoice" onclick="toggleDropdown()">Select a Star Wars Character</div>
+				<div class="select is-info">	
+					<select id="dropdown" onchange="selectCharacter(this.value)">
+					<option value="" selected disabled>Select a character</option>
+					<option value="Luke Skywalker">Luke Skywalker</option>
+					<option value="Darth Vader">Darth Vader</option>
+					<option value="Princess Leia">Princess Leia</option>
+					<option value="Han Solo">Han Solo</option>
+					<option value="Yoda">Yoda</option>
+					<option value="R2-D2">R2-D2</option>
+					<option value="C-3PO">C-3PO</option>
+
+			</select>
+				
+			</div>
 
       <div id="newFacts">
         <div class="row">
