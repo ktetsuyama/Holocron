@@ -56,42 +56,146 @@ function fetchSwapi(character) {
     });
 }
 
-// Function to fetch data from OMDB API
-function fetchOmdb(character) {
-  var apiKey = "24f8ea01";
-  var omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${apiKey}`;
+var charImgtext = document.getElementById("characterImageContainer");
+var charLight = document.getElementById("lightcharChoice");
+var charDark = document.getElementById("darkcharChoice");
+let charNames = [];
+const names = ["birth_year", "films", "homeworld", "starships", "vehicles"];
+const sides = [charLight, charDark];
 
-  return fetch(omdbUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("OMDB Data:", data);
-      displayCharacterImage(character, data.Search[0].Poster);
-    });
+// Function to fetch data from SWAPI
+
+async function fetchSwapi(character, side) {
+  try {
+    const swapiUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
+      character
+    )}`;
+    const response = await fetch(swapiUrl);
+    const data = await response.json();
+    console.log(`${side.toUpperCase()} SWAPI Data:`, data);
+
+    // Extract film URLs from SWAPI response
+    const filmUrls = data.results[0]?.films || [];
+
+    // Fetch film data using the film URLs
+    const films = await Promise.all(
+      filmUrls.map((filmUrl) =>
+        fetch(filmUrl).then((response) => response.json())
+      )
+    );
+
+    // Extract character details
+    const characterDetails = {
+      birth_year: data.results[0]?.birth_year,
+      // homeworld: data.results[0]?.homeworld,
+      // starships: data.results[0]?.starships,
+      // vehicles: data.results[0]?.vehicles,
+      films: films.map((film) => film.title),
+    };
+
+    console.log("Character Details:", characterDetails);
+
+    // Display character image based on side
+    displayCharacterImage(
+      data.results[0]?.name,
+      `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
+        /\d+/
+      )}.jpg`,
+      side
+    );
+
+    // Display character details
+    displayCharacterDetails(data.results[0]?.name, characterDetails, side);
+  } catch (error) {
+    console.error(`Error fetching ${side} side character data:`, error);
+  }
 }
 
-// Function to display the character's image
-function displayCharacterImage(character, imageUrl) {
-  var characterImage = $("#characterImage");
+// Function to fetch data from OMDB API
+async function fetchOmdb(character, side) {
+  try {
+    const omdbApiKey = "24f8ea01";
+    const omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${omdbApiKey}`;
+    const response = await fetch(omdbUrl);
+    const data = await response.json();
+    console.log(`${side.toUpperCase()} OMDB Data:`, data);
 
-  if (characterImage.length === 0) {
-    console.error("Error: #characterImage not found in the HTML.");
+    // Display character image based on side
+    displayCharacterImage(character, data.Search[0]?.Poster, side);
+
+    // Display character details
+    displayCharacterDetails(character, names, side ? side.toString() : "");
+  } catch (error) {
+    console.error(
+      `Error fetching ${side} side character data from OMDB:`,
+      error
+    );
+  }
+}
+
+// Function to display character image
+function displayCharacterImage(selectedCharacter, imageUrl, side) {
+  const characterImage = document.getElementById(`${side}CharacterImage`);
+
+  if (!characterImage) {
+    console.error(`Error: #${side}CharacterImage not found in the HTML.`);
     return;
   }
 
   if (imageUrl) {
-    characterImage.attr("src", imageUrl);
-    characterImage.attr("alt", `${character} Poster`);
+    characterImage.src = imageUrl;
+    characterImage.alt = `${selectedCharacter} Poster`;
   } else {
   }
 }
 
-// Function to handle the character selection
-function selectCharacter(selectedCharacter) {
-  // Call fetchSwapi with the selected character
-  fetchSwapi(selectedCharacter);
+function displayCharacterDetails(selectedCharacter, details, side) {
+  const detailsContainer = document.getElementById(`${side}FactsContainer`);
 
-  // Call fetchOmdb with the selected character
-  fetchOmdb(selectedCharacter);
+  if (!detailsContainer) {
+    console.error(`Error: #${side}FactsContainer not found in the HTML.`);
+    return;
+  }
+
+  // Created a details container
+  const detailsElement = document.createElement("div");
+  detailsElement.classList.add("content");
+
+  // For the character name
+  const nameParagraph = document.createElement("p");
+  nameParagraph.innerHTML = `<strong>Name:</strong> ${selectedCharacter}`;
+  detailsElement.appendChild(nameParagraph);
+
+  for (const key in details) {
+    if (Array.isArray(details[key])) {
+      const listParagraph = document.createElement("p");
+      listParagraph.innerHTML = `<strong>${
+        key.charAt(0).toUpperCase() + key.slice(1)
+      }:</strong> ${details[key].join(", ")}`;
+      detailsElement.appendChild(listParagraph);
+    } else {
+      // For other details
+      const detailParagraph = document.createElement("p");
+      detailParagraph.innerHTML = `<strong>${
+        key.charAt(0).toUpperCase() + key.slice(1)
+      }:</strong> ${details[key]}`;
+      detailsElement.appendChild(detailParagraph);
+    }
+  }
+
+  detailsContainer.innerHTML = "";
+
+  // Append the details to the container
+  detailsContainer.appendChild(detailsElement);
+}
+
+// Function to handle the character selection
+function selectCharacter(selectedCharacter, side) {
+  // Call back fetchSwapi
+  fetchSwapi(selectedCharacter, side);
+
+  // Call back fetchOmdb
+  fetchOmdb(selectedCharacter, side);
 }
 
 ///------------------------------------Event listener that listens for click on movie selector--------------------------------
