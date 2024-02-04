@@ -223,8 +223,8 @@ $(".column img").on("click", function () {
 	$("#characterChoice .columns").addClass("is-hidden");
 
 	// Show the movie that corresponds to the clicked poster
-	$("#movie" + posterClicked.replace("Ep", "")).removeClass("is-hidden");
-	console.log($("#movie" + posterClicked.replace("Ep", "")).prop("outerHTML"));
+	var movieId = "movie" + posterClicked.replace("Ep", "");
+	$("#" + movieId).removeClass("is-hidden");
 
 	// Show character choice
 	$("#characterChoice").removeClass("is-hidden");
