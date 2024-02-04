@@ -173,6 +173,16 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 				key.charAt(0).toUpperCase() + key.slice(1)
 			}:</strong> ${details[key].join(", ")}`;
 			detailsElement.appendChild(listParagraph);
+		} else if (key === "birth_year") {
+			var birthYear = "birth_year";
+			var formattedBirthYear = birthYear.replace("_", " ");
+			formattedBirthYear =
+				formattedBirthYear.charAt(0).toUpperCase() +
+				formattedBirthYear.slice(1);
+
+			const birthYearParagraph = document.createElement("p");
+			birthYearParagraph.innerHTML = `<strong>${formattedBirthYear}:</strong> ${details[key]}`;
+			detailsElement.appendChild(birthYearParagraph);
 		} else {
 			// For other details
 			const detailParagraph = document.createElement("p");
@@ -182,6 +192,11 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 			detailsElement.appendChild(detailParagraph);
 		}
 	}
+	var birthYear = "birth_year";
+	var formattedBirthYear = birthYear.replace("_", " ");
+	formattedBirthYear =
+		formattedBirthYear.charAt(0).toUpperCase() + formattedBirthYear.slice(1);
+	$(".content p:nth-child(2)").text(formattedBirthYear);
 
 	detailsContainer.innerHTML = "";
 
