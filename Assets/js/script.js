@@ -130,6 +130,20 @@ async function fetchOmdb(character, side) {
     const data = await response.json();
     console.log(`${side.toUpperCase()} OMDB Data:`, data);
 
+    // Display extra movies
+    $("#extra-movies").empty();
+
+    for (let i = 0; i < data.Search.length; i++) {
+      var extraMovies = `<p>Movie: ${data.Search[i].Title}, Year: ${data.Search[i].Year}, ${data.Search[i].Type}</p>`;
+      var noExtraMovies = `<p>No extra movies</p>`;
+
+      if (data.Error == "Movie not found!") {
+        $("#extra-movies").append(noExtraMovies);
+      } else {
+        $("#extra-movies").append(extraMovies);
+      }
+    }
+
     // Display character image based on side
     // displayCharacterImage(character, data.Search[0]?.Poster, side);
 
@@ -275,6 +289,9 @@ $(".column ").on("click", "img", function () {
 
   // Hide all movies
   $("#characterChoice .columns").addClass("is-hidden");
+
+  // Show extra movies
+  $("#extra-container").removeClass("is-hidden");
 
   // Show the movie that corresponds to the clicked poster
   movieId = "movie" + posterClicked.replace("Ep", "");
