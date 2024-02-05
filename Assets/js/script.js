@@ -168,7 +168,7 @@ async function fetchOmdb(character, side) {
 		}
 
 		for (let i = 0; i < data.Search.length; i++) {
-			var extraMovies = `<p class="has-text-left px-6">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p class="has-text-left px-6">Year: ${data.Search[i].Year}</p> <p class="has-text-left px-6">Type: ${data.Search[i].Type}</p> <hr>`;
+			var extraMovies = `<p id="h3" class="has-text-left px-6">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p id="h3" class="has-text-left px-6">Year: ${data.Search[i].Year}</p> <p id="h3" class="has-text-left px-6">Type: ${data.Search[i].Type}</p> <hr>`;
 			$("#extra-movies").append(extraMovies);
 			console.log(data);
 		}
@@ -251,12 +251,14 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 
 	// For the character name
 	const nameParagraph = document.createElement("p");
+	nameParagraph.id = "h3";
 	nameParagraph.innerHTML = `<strong>Name:</strong> ${selectedCharacter}`;
 	detailsElement.appendChild(nameParagraph);
 
 	for (const key in details) {
 		if (Array.isArray(details[key])) {
 			const listParagraph = document.createElement("p");
+			listParagraph.id = "h3";
 			listParagraph.innerHTML = `<strong>${
 				key.charAt(0).toUpperCase() + key.slice(1)
 			}:</strong> ${details[key].join(", ")}`;
@@ -268,6 +270,7 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 				formattedEyeColor.charAt(0).toUpperCase() + formattedEyeColor.slice(1);
 
 			const eyeColorParagraph = document.createElement("p");
+			eyeColorParagraph.id = "h3";
 			eyeColorParagraph.innerHTML = `<strong>${formattedEyeColor}:</strong> ${details[key]}`;
 			detailsElement.appendChild(eyeColorParagraph);
 		} else if (key === "hair_color") {
@@ -278,6 +281,7 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 				formattedHairColor.slice(1);
 
 			const hairColorParagraph = document.createElement("p");
+			hairColorParagraph.id = "h3";
 			hairColorParagraph.innerHTML = `<strong>${formattedHairColor}:</strong> ${details[key]}`;
 			detailsElement.appendChild(hairColorParagraph);
 		} else if (key === "birth_year") {
@@ -288,6 +292,7 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 				formattedBirthYear.slice(1);
 
 			const birthYearParagraph = document.createElement("p");
+			birthYearParagraph.id = "h3";
 			birthYearParagraph.innerHTML = `<strong>${formattedBirthYear}:</strong> ${details[key]}`;
 			detailsElement.appendChild(birthYearParagraph);
 		} else if (key === "skin_color") {
@@ -298,11 +303,13 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 				formattedSkinColor.slice(1);
 
 			const skinColorParagraph = document.createElement("p");
+			skinColorParagraph.id = "h3";
 			skinColorParagraph.innerHTML = `<strong>${formattedSkinColor}:</strong> ${details[key]}`;
 			detailsElement.appendChild(skinColorParagraph);
 		} else {
 			// For other details
 			const detailParagraph = document.createElement("p");
+			detailParagraph.id = "h3";
 			detailParagraph.innerHTML = `<strong>${
 				key.charAt(0).toUpperCase() + key.slice(1)
 			}:</strong> ${details[key]}`;
