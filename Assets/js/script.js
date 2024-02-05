@@ -131,17 +131,20 @@ async function fetchOmdb(character, side) {
     console.log(`${side.toUpperCase()} OMDB Data:`, data);
 
     // Display extra movies
+    // Will disaply no extra movies
     $("#extra-movies").empty();
+    var noExtraMovies = `<p>No extra movies</p>`;
+    if (data.Error) {
+      $("#extra-movies").append(noExtraMovies);
+      console.log(data.Error);
+    }
+    // Will disaply extra movies if they exist
+    else {
+    }
 
     for (let i = 0; i < data.Search.length; i++) {
       var extraMovies = `<p>Movie: ${data.Search[i].Title}, Year: ${data.Search[i].Year}, ${data.Search[i].Type}</p>`;
-      var noExtraMovies = `<p>No extra movies</p>`;
-
-      if (data.Error == "Movie not found!") {
-        $("#extra-movies").append(noExtraMovies);
-      } else {
-        $("#extra-movies").append(extraMovies);
-      }
+      $("#extra-movies").append(extraMovies);
     }
 
     // Display character image based on side
