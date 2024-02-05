@@ -1,627 +1,640 @@
 <!DOCTYPE html>
 <html lang="en" class="has-background-link">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Holocron</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Holocron</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
 
-  <body>
-    <div class="section header mb-5">
-      <img
-        class="image is-fullwidth"
-        src="Assets/images/text-Star_Wars_Actor_Holocron.png"
-        alt="Star Wars Font Text of Star Wars Actor Holocron"
-        width="1500"
-      />
-    </div>
-    <main>
-      <div class="background-container">
-        <div
-          id="episodeChoice1"
-          class="container is-widescreen notification mb-5"
-        >
-          <div class="has-text-centered is-size-1">Our Star Wars Universe</div>
-          <div class="columns">
-            <p id="Ep1" class="column">
-              <img src="./Assets/images/Episode I.jpg" />
-            </p>
-            <p id="Ep2" class="column">
-              <img src="./Assets/images/Episode II.jpg" />
-            </p>
-            <p id="Ep3" class="column">
-              <img src="./Assets/images/Episode III.jpg" />
-            </p>
-            <p id="Ep4" class="column">
-              <img src="./Assets/images/Episode IV.jpg" />
-            </p>
-            <p id="Ep5" class="column">
-              <img src="./Assets/images/Episode V.jpg" />
-            </p>
-            <p id="Ep6" class="column">
-              <img src="./Assets/images/Episode VI.jpg" />
-            </p>
-          </div>
-          <div class="has-text-centered is-size-4">
-            Click a film poster above to learn more about that film's characters
-            and see other films about them!
-          </div>
-        </div>
-      </div>
+	<body>
+		<div class="my-class has-background-black">
+			<h1 class="has-text-white">Star Wars Facts and Flicks</h1>
+		</div>
+		<!-- <div class="section header mb-5">
+			<img
+				class="image is-fullwidth"
+				src="Assets/images/text-Star_Wars_Actor_Holocron.png"
+				alt="Star Wars Font Text of Star Wars Actor Holocron"
+				width="1500"
+			/>
+		</div> -->
+		<main>
+			<div class="background-container">
+				<div
+					id="episodeChoice1"
+					class="container is-widescreen notification mb-5"
+				>
+					<div id="h2" class="has-text-centered is-size-1">
+						Our Star Wars Universe
+					</div>
+					<div class="columns">
+						<p id="Ep1" class="column">
+							<img src="./Assets/images/Episode I.jpg" />
+						</p>
+						<p id="Ep2" class="column">
+							<img src="./Assets/images/Episode II.jpg" />
+						</p>
+						<p id="Ep3" class="column">
+							<img src="./Assets/images/Episode III.jpg" />
+						</p>
+						<p id="Ep4" class="column">
+							<img src="./Assets/images/Episode IV.jpg" />
+						</p>
+						<p id="Ep5" class="column">
+							<img src="./Assets/images/Episode V.jpg" />
+						</p>
+						<p id="Ep6" class="column">
+							<img src="./Assets/images/Episode VI.jpg" />
+						</p>
+					</div>
+					<div id="h2" class="has-text-centered is-size-4">
+						Click a film poster above to learn more about that film's characters
+						and see other films about them!
+					</div>
+				</div>
+			</div>
 
-      <div
-        id="characterImageContainer"
-        class="container is-widescreen notification mb-5 has-text-centered"
-      >
-        <p class="is-family-secondary">Dive Deep Into The Universe</p>
-      </div>
+			<div
+				id="characterImageContainer"
+				class="container is-widescreen notification mb-5 has-text-centered"
+			>
+				<p id="h2" class="is-size-5">Dive Deep Into The Universe</p>
+			</div>
 
-      <div
-        id="characterChoice"
-        class="container movie is-widescreen notification is-hidden"
-      >
-        <div id="movie1" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice1"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown1"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
-                  <option value="Yoda">Yoda</option>
-                  <option value="Qui-Gon Jinn">Qui-Gon Jinn</option>
-                  <option value="Finis Valorum">Finis Valorum</option>
-                  <option value="Padmé Amidala">Padmé Amidala</option>
-                  <option value="Jar Jar Binks">Jar Jar Binks</option>
-                  <option value="Roos Tarpals">Roos Tarpals</option>
-                  <option value="Rugor Nass">Boss Nass</option>
-                  <option value="Ric Olié">Ric Olié</option>
-                  <option value="Quarsh Panaka">Quarsh Panaka</option>
-                  <option value="Shmi Skywalker">Shmi Skywalker</option>
-                  <option value="Ayla Secura">Aayla Secura</option>
-                  <option value="Ratts Tyerel">Ratts Tyerel</option>
-                  <option value="Dud Bolt">Dud Bolt</option>
-                  <option value="Gasgano">Gasgano</option>
-                  <option value="Ben Quadinaros">Ben Quadinaros</option>
-                  <option value="Mace Windu">Mace Windu</option>
-                  <option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
-                  <option value="Kit Fisto">Kit Fisto</option>
-                  <option value="Eeth Koth">Eeth Koth</option>
-                  <option value="Adi Gallia">Adi Gallia</option>
-                  <option value="Saesee Tiin">Saesee Tiin</option>
-                  <option value="Yarael Poof">Yarael Poof</option>
-                  <option value="Plo Koon">Plo Koon</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage1" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer1"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+			<div
+				id="characterChoice"
+				class="container movie is-widescreen notification is-hidden"
+			>
+				<div id="movie1" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice1"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown1"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
+									<option value="Yoda">Yoda</option>
+									<option value="Qui-Gon Jinn">Qui-Gon Jinn</option>
+									<option value="Finis Valorum">Finis Valorum</option>
+									<option value="Padmé Amidala">Padmé Amidala</option>
+									<option value="Jar Jar Binks">Jar Jar Binks</option>
+									<option value="Roos Tarpals">Roos Tarpals</option>
+									<option value="Rugor Nass">Boss Nass</option>
+									<option value="Ric Olié">Ric Olié</option>
+									<option value="Quarsh Panaka">Quarsh Panaka</option>
+									<option value="Shmi Skywalker">Shmi Skywalker</option>
+									<option value="Ayla Secura">Aayla Secura</option>
+									<option value="Ratts Tyerel">Ratts Tyerel</option>
+									<option value="Dud Bolt">Dud Bolt</option>
+									<option value="Gasgano">Gasgano</option>
+									<option value="Ben Quadinaros">Ben Quadinaros</option>
+									<option value="Mace Windu">Mace Windu</option>
+									<option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
+									<option value="Kit Fisto">Kit Fisto</option>
+									<option value="Eeth Koth">Eeth Koth</option>
+									<option value="Adi Gallia">Adi Gallia</option>
+									<option value="Saesee Tiin">Saesee Tiin</option>
+									<option value="Yarael Poof">Yarael Poof</option>
+									<option value="Plo Koon">Plo Koon</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage1" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer1"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice1"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown1"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Anakin Skywalker">Anakin Skywalker</option>
-                  <option value="Jabba Desilijic Tiure">Jabba the Hutt</option>
-                  <option value="Palpatine">Senator Palpatine</option>
-                  <option value="Nute Gunray">Nute Gunray</option>
-                  <option value="Watto">Watto</option>
-                  <option value="Sebulba">Sebulba</option>
-                  <option value="Darth Maul">Darth Maul</option>
-                  <option value="Mas Amedda">Mas Amedda</option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice1"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown1"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Anakin Skywalker">Anakin Skywalker</option>
+									<option value="Jabba Desilijic Tiure">Jabba the Hutt</option>
+									<option value="Palpatine">Senator Palpatine</option>
+									<option value="Nute Gunray">Nute Gunray</option>
+									<option value="Watto">Watto</option>
+									<option value="Sebulba">Sebulba</option>
+									<option value="Darth Maul">Darth Maul</option>
+									<option value="Mas Amedda">Mas Amedda</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage1" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer1"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
+						<img id="darkCharacterImage1" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer1"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
 
-        <div id="movie2" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice2"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown2"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
-                  <option value="Yoda">Yoda</option>
-                  <option value="Padmé Amidala">Queen Padmé Amidala</option>
-                  <option value="Jar Jar Binks">Jar Jar Binks</option>
-                  <option value="Shmi Skywalker">Shmi Skywalker</option>
-                  <option value="Ayla Secura">Aayla Secura</option>
-                  <option value="Mace Windu">Mace Windu</option>
-                  <option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
-                  <option value="Kit Fisto">Kit Fisto</option>
-                  <option value="Plo Koon">Plo Koon</option>
-                  <option value="Owen Lars">Uncle Owen</option>
-                  <option value="Beru Whitesun lars">Aunt Beru</option>
-                  <option value="Gregar Typho">Gregar Typho</option>
-                  <option value="Cordé">Cordé</option>
-                  <option value="Cliegg Lars">Cliegg Lars</option>
-                  <option value="Luminara Unduli">Luminara Unduli</option>
-                  <option value="Barriss Offee">Barriss Offee</option>
-                  <option value="Dormé">Dormé</option>
-                  <option value="Bail Prestor Organa">
-                    Bail Prestor Organa
-                  </option>
-                  <option value="Dexter Jettster">Dexter Jettster</option>
-                  <option value="Taun We">Taun We</option>
-                  <option value="Jocasta Nu">Jocasta Nu</option>
-                  <option value="R4-P17">R4-P17</option>
-                  <option value="Shaak Ti">Cordé</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage2" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer2"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+				<div id="movie2" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice2"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown2"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
+									<option value="Yoda">Yoda</option>
+									<option value="Padmé Amidala">Queen Padmé Amidala</option>
+									<option value="Jar Jar Binks">Jar Jar Binks</option>
+									<option value="Shmi Skywalker">Shmi Skywalker</option>
+									<option value="Ayla Secura">Aayla Secura</option>
+									<option value="Mace Windu">Mace Windu</option>
+									<option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
+									<option value="Kit Fisto">Kit Fisto</option>
+									<option value="Plo Koon">Plo Koon</option>
+									<option value="Owen Lars">Uncle Owen</option>
+									<option value="Beru Whitesun lars">Aunt Beru</option>
+									<option value="Gregar Typho">Gregar Typho</option>
+									<option value="Cordé">Cordé</option>
+									<option value="Cliegg Lars">Cliegg Lars</option>
+									<option value="Luminara Unduli">Luminara Unduli</option>
+									<option value="Barriss Offee">Barriss Offee</option>
+									<option value="Dormé">Dormé</option>
+									<option value="Bail Prestor Organa">
+										Bail Prestor Organa
+									</option>
+									<option value="Dexter Jettster">Dexter Jettster</option>
+									<option value="Taun We">Taun We</option>
+									<option value="Jocasta Nu">Jocasta Nu</option>
+									<option value="R4-P17">R4-P17</option>
+									<option value="Shaak Ti">Cordé</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage2" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer2"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice2"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown2"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Anakin Skywalker">Anakin Skywalker</option>
-                  <option value="Palpatine">Senator Palpatine</option>
-                  <option value="Nute Gunray">Nute Gunray</option>
-                  <option value="Watto">Watto</option>
-                  <option value="Mas Amedda">Mas Amedda</option>
-                  <option value="Boba Fett">Boba Fett</option>
-                  <option value="Poggle the Lesser">Poggle the Lesser</option>
-                  <option value="Dooku">Count Dooku</option>
-                  <option value="Jango Fett">Jango Fett</option>
-                  <option value="Zam Wesell">Zam Wesell</option>
-                  <option value="Lama Su">Lama Su</option>
-                  <option value="Wat Tambor">Wat Tambor</option>
-                  <option value="San Hill">San Hill</option>
-                  <option value="Sly Moore">Sly Moore</option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice2"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown2"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Anakin Skywalker">Anakin Skywalker</option>
+									<option value="Palpatine">Senator Palpatine</option>
+									<option value="Nute Gunray">Nute Gunray</option>
+									<option value="Watto">Watto</option>
+									<option value="Mas Amedda">Mas Amedda</option>
+									<option value="Boba Fett">Boba Fett</option>
+									<option value="Poggle the Lesser">Poggle the Lesser</option>
+									<option value="Dooku">Count Dooku</option>
+									<option value="Jango Fett">Jango Fett</option>
+									<option value="Zam Wesell">Zam Wesell</option>
+									<option value="Lama Su">Lama Su</option>
+									<option value="Wat Tambor">Wat Tambor</option>
+									<option value="San Hill">San Hill</option>
+									<option value="Sly Moore">Sly Moore</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage2" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer2"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
+						<img id="darkCharacterImage2" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer2"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
 
-        <div id="movie3" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice3"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown3"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Luke Skywalker">Luke Skywalker</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Leia Organa">Leia Organa</option>
-                  <option value="Owen Lars">Uncle Owen</option>
-                  <option value="Beru Whitesun lars">Aunt Beru</option>
-                  <option value="Obi-Wan Kenobi">Lando Calrissian</option>
-                  <option value="Chewbacca">Chewbacca</option>
-                  <option value="Yoda">Yoda</option>
-                  <option value="Padmé Amidala">Padmé Amidala</option>
-                  <option value="Ayla Secura">Aayla Secura</option>
-                  <option value="Mace Windu">Mace Windu</option>
-                  <option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
-                  <option value="Kit Fisto">Kit Fisto</option>
-                  <option value="Eeth Koth">Eeth Koth</option>
-                  <option value="Adi Gallia">Adi Gallia</option>
-                  <option value="Saesee Tiin">Saesee Tiin</option>
-                  <option value="Plo Koon">Plo Koon</option>
-                  <option value="Bail Prestor Organa">
-                    Bail Prestor Organa
-                  </option>
-                  <option value="R4-P17">R4-P17</option>
-                  <option value="Shaak Ti">Shaak Ti</option>
-                  <option value="Tarfful">Tarfful</option>
-                  <option value="Raymus Antilles">Raymus Antilles</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage3" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer3"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+				<div id="movie3" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice3"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown3"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Luke Skywalker">Luke Skywalker</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Leia Organa">Leia Organa</option>
+									<option value="Owen Lars">Uncle Owen</option>
+									<option value="Beru Whitesun lars">Aunt Beru</option>
+									<option value="Obi-Wan Kenobi">Lando Calrissian</option>
+									<option value="Chewbacca">Chewbacca</option>
+									<option value="Yoda">Yoda</option>
+									<option value="Padmé Amidala">Padmé Amidala</option>
+									<option value="Ayla Secura">Aayla Secura</option>
+									<option value="Mace Windu">Mace Windu</option>
+									<option value="Ki-Adi-Mundi">Ki-Adi-Mundi</option>
+									<option value="Kit Fisto">Kit Fisto</option>
+									<option value="Eeth Koth">Eeth Koth</option>
+									<option value="Adi Gallia">Adi Gallia</option>
+									<option value="Saesee Tiin">Saesee Tiin</option>
+									<option value="Plo Koon">Plo Koon</option>
+									<option value="Bail Prestor Organa">
+										Bail Prestor Organa
+									</option>
+									<option value="R4-P17">R4-P17</option>
+									<option value="Shaak Ti">Shaak Ti</option>
+									<option value="Tarfful">Tarfful</option>
+									<option value="Raymus Antilles">Raymus Antilles</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage3" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer3"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice3"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown3"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Darth Vader">Darth Vader</option>
-                  <option value="Anakin Skywalker">Anakin Skywalker</option>
-                  <option value="Wilhuff Tarkin">Wilhuff Tarkin</option>
-                  <option value="Palpatine">Emperor Palpatine</option>
-                  <option value="Nute Gunray">Nute Gunray</option>
-                  <option value="Poggle the Lesser">Poggle the Lesser</option>
-                  <option value="Dooku">Count Dooku</option>
-                  <option value="Grievous">General Grievous</option>
-                  <option value="Sly Moore">Sly Moores</option>
-                  <option value="Tion Medon">Tion Medon</option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice3"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown3"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Darth Vader">Darth Vader</option>
+									<option value="Anakin Skywalker">Anakin Skywalker</option>
+									<option value="Wilhuff Tarkin">Wilhuff Tarkin</option>
+									<option value="Palpatine">Emperor Palpatine</option>
+									<option value="Nute Gunray">Nute Gunray</option>
+									<option value="Poggle the Lesser">Poggle the Lesser</option>
+									<option value="Dooku">Count Dooku</option>
+									<option value="Grievous">General Grievous</option>
+									<option value="Sly Moore">Sly Moores</option>
+									<option value="Tion Medon">Tion Medon</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage3" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer3"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
+						<img id="darkCharacterImage3" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer3"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
 
-        <div id="movie4" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice4"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown4"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Luke Skywalker">Luke Skywalker</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Leia Organa">Princess Leia</option>
-                  <option value="Owen Lars">Uncle Owen</option>
-                  <option value="Beru Whitesun lars">Aunt Beru</option>
-                  <option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
-                  <option value="Chewbacca">Chewbacca</option>
-                  <option value="Raymus Antilles">Raymus Antilles</option>
-                  <option value="R5-D4">R5-D4</option>
-                  <option value="Biggs Darklighter">Biggs Darklighter</option>
-                  <option value="Han Solo">Han Solo</option>
-                  <option value="Wedge Antilles">Wedge Antilles</option>
-                  <option value="Jek Tono Porkins">Jek Tono Porkins</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage4" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer4"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+				<div id="movie4" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice4"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown4"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Luke Skywalker">Luke Skywalker</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Leia Organa">Princess Leia</option>
+									<option value="Owen Lars">Uncle Owen</option>
+									<option value="Beru Whitesun lars">Aunt Beru</option>
+									<option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
+									<option value="Chewbacca">Chewbacca</option>
+									<option value="Raymus Antilles">Raymus Antilles</option>
+									<option value="R5-D4">R5-D4</option>
+									<option value="Biggs Darklighter">Biggs Darklighter</option>
+									<option value="Han Solo">Han Solo</option>
+									<option value="Wedge Antilles">Wedge Antilles</option>
+									<option value="Jek Tono Porkins">Jek Tono Porkins</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage4" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer4"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice4"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown4"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Darth Vader">Darth Vader</option>
-                  <option value="Wilhuff Tarkin">Wilhuff Tarkin</option>
-                  <option value="Greedo">Greedo</option>
-                  <option value="Jabba Desilijic Tiure">
-                    Jabba Desilijic Tiure
-                  </option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice4"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown4"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Darth Vader">Darth Vader</option>
+									<option value="Wilhuff Tarkin">Wilhuff Tarkin</option>
+									<option value="Greedo">Greedo</option>
+									<option value="Jabba Desilijic Tiure">
+										Jabba Desilijic Tiure
+									</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage4" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer4"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
+						<img id="darkCharacterImage4" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer4"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
 
-        <div id="movie5" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice5"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown5"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Luke Skywalker">Luke Skywalker</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Leia Organa">Princess Leia</option>
-                  <option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
-                  <option value="Chewbacca">Chewbacca</option>
-                  <option value="Han Solo">Han Solo</option>
-                  <option value="Wedge Antilles">Wedge Antilles</option>
-                  <option value="Yoda">Yoda</option>
-                  <option value="Lando Calrissian">Lando Calrissian</option>
-                  <option value="Lobot">Lobot</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage5" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer5"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+				<div id="movie5" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice5"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown5"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Luke Skywalker">Luke Skywalker</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Leia Organa">Princess Leia</option>
+									<option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
+									<option value="Chewbacca">Chewbacca</option>
+									<option value="Han Solo">Han Solo</option>
+									<option value="Wedge Antilles">Wedge Antilles</option>
+									<option value="Yoda">Yoda</option>
+									<option value="Lando Calrissian">Lando Calrissian</option>
+									<option value="Lobot">Lobot</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage5" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer5"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice5"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown5"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Darth Vader">Darth Vader</option>
-                  <option value="Palpatine">Emperor Palpatine</option>
-                  <option value="Boba Fett">Boba Fett</option>
-                  <option value="IG-88">IG-88</option>
-                  <option value="Bossk">Bossk</option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice5"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown5"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Darth Vader">Darth Vader</option>
+									<option value="Palpatine">Emperor Palpatine</option>
+									<option value="Boba Fett">Boba Fett</option>
+									<option value="IG-88">IG-88</option>
+									<option value="Bossk">Bossk</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage5" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer5"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
+						<img id="darkCharacterImage5" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer5"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
 
-        <div id="movie6" class="columns movie">
-          <div class="column is-half">
-            <div
-              id="lightcharChoice6"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Light Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="lightDropdown6"
-                  onchange="selectCharacter(this.value,'light')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Luke Skywalker">Luke Skywalker</option>
-                  <option value="C-3PO">C-3PO</option>
-                  <option value="R2-D2">R2-D2</option>
-                  <option value="Leia Organa">Princess Leia</option>
-                  <option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
-                  <option value="Chewbacca">Chewbacca</option>
-                  <option value="Han Solo">Han Solo</option>
-                  <option value="Wedge Antilles">Wedge Antilles</option>
-                  <option value="Yoda">Yoda</option>
-                  <option value="Lando Calrissian">Lando Calrissian</option>
-                  <option value="Ackbar">Ackbar</option>
-                  <option value="Mon Mothma">Mon Mothma</option>
-                  <option value="Arvel Crynyd">Arvel Crynyd</option>
-                  <option value="Wicket Systri Warrick">
-                    Wicket Systri Warrick
-                  </option>
-                  <option value="Nien Nunb">Nien Nunb</option>
-                </select>
-              </div>
-            </div>
-            <img id="lightCharacterImage6" class="character-image" />
-            <button
-              id="showDetailsLight"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="lightFactsContainer6"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
+				<div id="movie6" class="columns movie">
+					<div class="column is-half">
+						<div
+							id="lightcharChoice6"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Light Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="lightDropdown6"
+									onchange="selectCharacter(this.value,'light')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Luke Skywalker">Luke Skywalker</option>
+									<option value="C-3PO">C-3PO</option>
+									<option value="R2-D2">R2-D2</option>
+									<option value="Leia Organa">Princess Leia</option>
+									<option value="Obi-Wan Kenobi">Obi-Wan Kenobi</option>
+									<option value="Chewbacca">Chewbacca</option>
+									<option value="Han Solo">Han Solo</option>
+									<option value="Wedge Antilles">Wedge Antilles</option>
+									<option value="Yoda">Yoda</option>
+									<option value="Lando Calrissian">Lando Calrissian</option>
+									<option value="Ackbar">Ackbar</option>
+									<option value="Mon Mothma">Mon Mothma</option>
+									<option value="Arvel Crynyd">Arvel Crynyd</option>
+									<option value="Wicket Systri Warrick">
+										Wicket Systri Warrick
+									</option>
+									<option value="Nien Nunb">Nien Nunb</option>
+								</select>
+							</div>
+						</div>
+						<img id="lightCharacterImage6" class="character-image" />
+						<!-- <button
+							id="showDetailsLight"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="lightFactsContainer6"
+							class="container is-widescreen notification"
+						></div>
+					</div>
 
-          <div class="column is-half">
-            <div
-              id="darkcharChoice6"
-              class="container is-widescreen notification"
-            >
-              <div onclick="toggleDropdown()">
-                Select a Dark Side Star Wars Character
-              </div>
-              <div class="select is-info is-widescreen">
-                <select
-                  id="darkDropdown6"
-                  onchange="selectCharacter(this.value,'dark')"
-                >
-                  <option value="" selected disabled>Select a character</option>
-                  <option value="Darth Vader">Darth Vader</option>
-                  <option value="Palpatine">Emperor Palpatine</option>
-                  <option value="Boba Fett">Boba Fett</option>
-                  <option value="Jabba Desilijic Tiure">Jabba the Hutt</option>
-                  <option value="Bib Fortuna">Bib Fortuna</option>
-                </select>
-              </div>
-            </div>
+					<div class="column is-half">
+						<div
+							id="darkcharChoice6"
+							class="container is-widescreen notification"
+						>
+							<div onclick="toggleDropdown()">
+								Select a Dark Side Star Wars Character
+							</div>
+							<div class="select is-info is-widescreen">
+								<select
+									id="darkDropdown6"
+									onchange="selectCharacter(this.value,'dark')"
+								>
+									<option value="" selected disabled>Select a character</option>
+									<option value="Darth Vader">Darth Vader</option>
+									<option value="Palpatine">Emperor Palpatine</option>
+									<option value="Boba Fett">Boba Fett</option>
+									<option value="Jabba Desilijic Tiure">Jabba the Hutt</option>
+									<option value="Bib Fortuna">Bib Fortuna</option>
+								</select>
+							</div>
+						</div>
 
-            <img id="darkCharacterImage6" class="character-image" />
-            <button
-              id="showDetailsDark"
-              class="button is-info is-fullwidth mt-3"
-            >
-              Details
-            </button>
-            <div
-              id="darkFactsContainer6"
-              class="container is-widescreen notification"
-            ></div>
-          </div>
-        </div>
-        <div class="container">
-          <div id="extra-container" class="col has-text-centered is-hidden">
-            <p>
-              Check out more movies about the favorite Star Wars character you
-              just chose.
-            </p>
-            <div id="extra-movies"></div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./Assets/js/script.js"></script>
-  </body>
+						<img id="darkCharacterImage6" class="character-image" />
+						<!-- <button
+							id="showDetailsDark"
+							class="button is-info is-fullwidth mt-3"
+						>
+							Details
+						</button> -->
+						<div
+							id="darkFactsContainer6"
+							class="container is-widescreen notification"
+						></div>
+					</div>
+				</div>
+				<div class="container">
+					<div id="extra-container" class="col has-text-centered is-hidden">
+						<p id="h2" class="has-text-weight-bold is-size-5">
+							Check out more movies about the favorite Star Wars character you
+							just chose:
+						</p>
+						<br />
+						<div id="extra-movies"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="./Assets/js/script.js"></script>
+	</body>
 </html>
