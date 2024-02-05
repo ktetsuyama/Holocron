@@ -110,12 +110,12 @@ async function fetchSwapi(character, side) {
 		// Extract character details
 		const characterDetails = {
 			birth_year: data.results[0]?.birth_year,
-			eye_color: data.results[0]?.eye_color,
-			gender: data.results[0]?.gender,
 			hair_color: data.results[0]?.hair_color,
+			eye_color: data.results[0]?.eye_color,
+			skin_color: data.results[0]?.skin_color,
+			gender: data.results[0]?.gender,
 			height: data.results[0]?.height,
 			mass: data.results[0]?.mass,
-			skin_color: data.results[0]?.skin_color,
 			homeworld: homeworld?.name,
 			species: species.map((specie) => specie.name),
 			films: films.map((film) => film.title),
