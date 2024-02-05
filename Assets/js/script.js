@@ -61,10 +61,13 @@ var charLight = document.getElementById("lightcharChoice");
 var charDark = document.getElementById("darkcharChoice");
 let charNames = [];
 const names = ["birth_year", "films", "homeworld", "starships", "vehicles"];
-const sides = [charLight, charDark];
+// const sides = [charLight, charDark];
 
-// Function to fetch data from SWAPI
-
+// ------------------------------------------------------------Function to fetch data from SWAPI---------------------------------------------
+var nameofCharacter;
+var charDetails;
+var characterSide;
+var charImage;
 async function fetchSwapi(character, side) {
   try {
     const swapiUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
@@ -95,23 +98,30 @@ async function fetchSwapi(character, side) {
 
     console.log("Character Details:", characterDetails);
 
-    // Display character image based on side
-    displayCharacterImage(
-      data.results[0]?.name,
-      `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
-        /\d+/
-      )}.jpg`,
-      side
-    );
+    nameofCharacter = data.results[0]?.name;
+    charDetails = characterDetails;
+    characterSide = side;
+    charImage = `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
+      /\d+/
+    )}.jpg`;
 
-    // Display character details
-    displayCharacterDetails(data.results[0]?.name, characterDetails, side);
+    // Display character image based on side
+    // displayCharacterImage(
+    //   data.results[0]?.name,
+    //   `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
+    //     /\d+/
+    //   )}.jpg`,
+    //   side
+    // );
+
+    // // Display character details
+    // displayCharacterDetails(data.results[0]?.name, characterDetails, side);
   } catch (error) {
     console.error(`Error fetching ${side} side character data:`, error);
   }
 }
 
-// Function to fetch data from OMDB API
+// ---------------------------------------------------------Function to fetch data from OMDB API
 async function fetchOmdb(character, side) {
   try {
     const omdbApiKey = "24f8ea01";
@@ -124,7 +134,7 @@ async function fetchOmdb(character, side) {
     // displayCharacterImage(character, data.Search[0]?.Poster, side);
 
     // Display character details
-    displayCharacterDetails(character, names, side ? side.toString() : "");
+    // displayCharacterDetails(character, names, side ? side.toString() : "");
   } catch (error) {
     console.error(
       `Error fetching ${side} side character data from OMDB:`,
@@ -132,25 +142,60 @@ async function fetchOmdb(character, side) {
     );
   }
 }
-
+/////--------------------------------------------Display Character Image-----------------------------------------------
 // Function to display character image
-function displayCharacterImage(selectedCharacter, imageUrl, side) {
-  const characterImage = document.getElementById(`${side}CharacterImage`);
+function displayCharacterImage(selectedCharacter, charImage, side) {
+  var characterImage;
+  if (movieId == "movie1") {
+    characterImage = document.getElementById(`${side}CharacterImage1`);
+  } else if (movieId == "movie2") {
+    characterImage = document.getElementById(`${side}CharacterImage2`);
+  } else if (movieId == "movie3") {
+    characterImage = document.getElementById(`${side}CharacterImage3`);
+  } else if (movieId == "movie4") {
+    characterImage = document.getElementById(`${side}CharacterImage4`);
+  } else if (movieId == "movie5") {
+    characterImage = document.getElementById(`${side}CharacterImage5`);
+  } else if (movieId == "movie6") {
+    characterImage = document.getElementById(`${side}CharacterImage6`);
+  }
 
   if (!characterImage) {
     console.error(`Error: #${side}CharacterImage not found in the HTML.`);
     return;
   }
 
-  if (imageUrl) {
-    characterImage.src = imageUrl;
+  if (charImage) {
+    characterImage.src = charImage;
     characterImage.alt = `${selectedCharacter} Poster`;
   } else {
   }
 }
-
+/////--------------------------------------------Display Character Details -----------------------------------------------
 function displayCharacterDetails(selectedCharacter, details, side) {
-  const detailsContainer = document.getElementById(`${side}FactsContainer`);
+  var detailsContainer;
+  console.log(movieId);
+  if (movieId == "movie1") {
+    console.log("Movie 1");
+    detailsContainer = document.getElementById(`${side}FactsContainer1`);
+  } else if (movieId == "movie2") {
+    console.log("Movie 2");
+    detailsContainer = document.getElementById(`${side}FactsContainer2`);
+  } else if (movieId == "movie3") {
+    console.log("Movie 3");
+    detailsContainer = document.getElementById(`${side}FactsContainer3`);
+  } else if (movieId == "movie4") {
+    console.log("Movie 4");
+    detailsContainer = document.getElementById(`${side}FactsContainer4`);
+  } else if (movieId == "movie5") {
+    console.log("Movie 5");
+    detailsContainer = document.getElementById(`${side}FactsContainer5`);
+  } else if (movieId == "movie6") {
+    console.log("Movie 6");
+    detailsContainer = document.getElementById(`${side}FactsContainer6`);
+  } else {
+    console.log("Break");
+  }
 
   if (!detailsContainer) {
     console.error(`Error: #${side}FactsContainer not found in the HTML.`);
@@ -205,16 +250,25 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 }
 
 // Function to handle the character selection
-function selectCharacter(selectedCharacter, side) {
-  // Call back fetchSwapi
-  fetchSwapi(selectedCharacter, side);
+async function selectCharacter(selectedCharacter, side) {
+  try {
+    // Call back fetchSwapi
+    await fetchSwapi(selectedCharacter, side);
 
-  // Call back fetchOmdb
-  fetchOmdb(selectedCharacter, side);
+    // Call back fetchOmdb
+    await fetchOmdb(selectedCharacter, side);
+
+    // Display character details
+    displayCharacterDetails(nameofCharacter, charDetails, characterSide);
+    //display character image
+    displayCharacterImage(nameofCharacter, charImage, characterSide);
+  } catch (error) {
+    console.error("Error selecting character:", error);
+  }
 }
 
 ///------------------------------------Event listener that listens for click on movie selector--------------------------------
-
+var movieId;
 $(".column ").on("click", "img", function () {
   var posterClicked = this.parentNode.id;
   console.log(posterClicked);
@@ -223,7 +277,8 @@ $(".column ").on("click", "img", function () {
   $("#characterChoice .columns").addClass("is-hidden");
 
   // Show the movie that corresponds to the clicked poster
-  var movieId = "movie" + posterClicked.replace("Ep", "");
+  movieId = "movie" + posterClicked.replace("Ep", "");
+  console.log(movieId);
   $("#" + movieId).removeClass("is-hidden");
 
   // Show character choice
