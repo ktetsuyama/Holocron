@@ -1,3 +1,10 @@
+html {
+	background-image: url("../images/star-wars.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
 #h2 {
 	font-family: "Press Start 2P", system-ui;
 }
