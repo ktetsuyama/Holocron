@@ -1,17 +1,16 @@
-.my-class h1 {
-	font-family: "Gruppo", sans-serif;
-	text-align: center;
-	font-size: 100px;
-}
-
 #h2 {
-	font-family: "Corben", serif;
+	font-family: "Press Start 2P", system-ui;
 }
 
 #h3 {
-	font-family: "Heebo", sans-serif;
+	font-family: "Corben", serif;
 }
-#Ep1:hover,#Ep2:hover,#Ep3:hover,#Ep4:hover,#Ep5:hover,#Ep6:hover{
-	background-color: rgb(0, 55, 255);
-	transform: scale(1.10);
+#Ep1:hover,
+#Ep2:hover,
+#Ep3:hover,
+#Ep4:hover,
+#Ep5:hover,
+#Ep6:hover {
+	background-color: #ffe81f;
+	transform: scale(1.1);
 }

@@ -150,7 +150,7 @@ async function fetchOmdb(character, side) {
 		} else {
 			// Append each movie to the container
 			for (let i = 0; i < data.Search.length; i++) {
-				var extraMovies = `<p class="has-text-left px-6">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p class="has-text-left px-6">Year: ${data.Search[i].Year}</p> <p class="has-text-left px-6">Type: ${data.Search[i].Type}</p> <hr>`;
+				var extraMovies = `<p id="h3" class="has-text-left px-2">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p id="h3" class="has-text-left px-2">Year: ${data.Search[i].Year}</p> <p id="h3" class="has-text-left px-2">Type: ${data.Search[i].Type}</p> <hr>`;
 				containerElement.insertAdjacentHTML("beforeend", extraMovies);
 				console.log(data);
 			}

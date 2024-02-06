@@ -11,7 +11,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Corben&family=Gruppo&family=Heebo&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Corben&family=Press+Start+2P&family=Heebo&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="./assets/css/style.css" />
@@ -19,23 +19,17 @@
 
 	<body>
 		<div class="my-class has-background-black">
-			<h1 class="has-text-white">Star Wars Facts and Flicks</h1>
+			<figure class="image container is-256x256 py-4">
+				<img src="./Assets/images/title.png" />
+			</figure>
 		</div>
-		<!-- <div class="section header mb-5">
-			<img
-				class="image is-fullwidth"
-				src="Assets/images/text-Star_Wars_Actor_Holocron.png"
-				alt="Star Wars Font Text of Star Wars Actor Holocron"
-				width="1500"
-			/>
-		</div> -->
 		<main>
 			<div class="background-container">
 				<div
 					id="episodeChoice1"
 					class="container is-widescreen notification mb-5"
 				>
-					<p id="h2" class="has-text-centered is-size-1 pb-5">
+					<p id="h2" class="has-text-centered is-size-3 pb-5">
 						Our Star Wars Universe
 					</p>
 					<div class="columns">
@@ -49,7 +43,7 @@
 							<img src="./Assets/images/Episode III.jpg" />
 						</p>
 						<p id="Ep4" class="column">
-							<img src="./Assets/images/Episode IV.jpg"  />
+							<img src="./Assets/images/Episode IV.jpg" />
 						</p>
 						<p id="Ep5" class="column">
 							<img src="./Assets/images/Episode V.jpg" />
@@ -58,7 +52,7 @@
 							<img src="./Assets/images/Episode VI.jpg" />
 						</p>
 					</div>
-					<div id="h2" class="has-text-centered has-text-weight-bold is-size-4">
+					<div id="h2" class="has-text-centered has-text-weight-bold is-size-5">
 						Choose a film poster above to learn more about that film's
 						characters and see other films about them!
 					</div>
@@ -82,7 +76,7 @@
 							id="lightcharChoice1"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -121,12 +115,6 @@
 							</div>
 						</div>
 						<img id="lightCharacterImage1" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="lightFactsContainer1"
 							class="container is-widescreen notification"
@@ -138,7 +126,7 @@
 							id="darkcharChoice1"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -160,12 +148,6 @@
 						</div>
 
 						<img id="darkCharacterImage1" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer1"
 							class="container is-widescreen notification"
@@ -179,7 +161,7 @@
 							id="lightcharChoice2"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -220,12 +202,6 @@
 							</div>
 						</div>
 						<img id="lightCharacterImage2" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="lightFactsContainer2"
 							class="container is-widescreen notification"
@@ -237,7 +213,7 @@
 							id="darkcharChoice2"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -265,12 +241,6 @@
 						</div>
 
 						<img id="darkCharacterImage2" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer2"
 							class="container is-widescreen notification"
@@ -284,7 +254,7 @@
 							id="lightcharChoice3"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -321,13 +291,7 @@
 								</select>
 							</div>
 						</div>
-						<img id="lightCharacterImage3" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
+						<img id="lightCharacterImage3" class="character-image" />s
 						<div
 							id="lightFactsContainer3"
 							class="container is-widescreen notification"
@@ -339,7 +303,7 @@
 							id="darkcharChoice3"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -363,12 +327,6 @@
 						</div>
 
 						<img id="darkCharacterImage3" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer3"
 							class="container is-widescreen notification"
@@ -382,7 +340,7 @@
 							id="lightcharChoice4"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -409,12 +367,6 @@
 							</div>
 						</div>
 						<img id="lightCharacterImage4" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="lightFactsContainer4"
 							class="container is-widescreen notification"
@@ -426,7 +378,7 @@
 							id="darkcharChoice4"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -446,12 +398,6 @@
 						</div>
 
 						<img id="darkCharacterImage4" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer4"
 							class="container is-widescreen notification"
@@ -465,7 +411,7 @@
 							id="lightcharChoice5"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -489,12 +435,6 @@
 							</div>
 						</div>
 						<img id="lightCharacterImage5" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="lightFactsContainer5"
 							class="container is-widescreen notification"
@@ -506,7 +446,7 @@
 							id="darkcharChoice5"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -525,12 +465,6 @@
 						</div>
 
 						<img id="darkCharacterImage5" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer5"
 							class="container is-widescreen notification"
@@ -544,7 +478,7 @@
 							id="lightcharChoice6"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Light Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -574,12 +508,6 @@
 							</div>
 						</div>
 						<img id="lightCharacterImage6" class="character-image" />
-						<!-- <button
-							id="showDetailsLight"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="lightFactsContainer6"
 							class="container is-widescreen notification"
@@ -591,7 +519,7 @@
 							id="darkcharChoice6"
 							class="container is-widescreen notification"
 						>
-							<div onclick="toggleDropdown()">
+							<div onclick="toggleDropdown()" id="h2" class="is-size-7">
 								Select a Dark Side Star Wars Character
 							</div>
 							<div class="select is-info is-widescreen">
@@ -610,12 +538,6 @@
 						</div>
 
 						<img id="darkCharacterImage6" class="character-image" />
-						<!-- <button
-							id="showDetailsDark"
-							class="button is-info is-fullwidth mt-3"
-						>
-							Details
-						</button> -->
 						<div
 							id="darkFactsContainer6"
 							class="container is-widescreen notification"
@@ -628,7 +550,7 @@
 						id="lightSideExtraMoviesContainer"
 						class="col column is-half has-text-left is-hidden"
 					>
-						<p id="h2" class="has-text-weight-bold is-size-5">
+						<p id="h2" class="has-text-weight-bold is-size-7">
 							Here are more movies about the favorite Star Wars character you
 							just chose:
 						</p>
@@ -641,7 +563,7 @@
 						id="darkSideExtraMoviesContainer"
 						class="col col column is-half has-text-left is-hidden"
 					>
-						<p id="h2" class="has-text-weight-bold is-size-5">
+						<p id="h2" class="has-text-weight-bold is-size-7">
 							Here are more movies about the favorite Star Wars character you
 							just chose:
 						</p>
