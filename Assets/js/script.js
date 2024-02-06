@@ -134,6 +134,11 @@ async function fetchOmdb(character, side) {
 		const containerId =
 			side === "light" ? "lightSideExtraMovies" : "darkSideExtraMovies";
 		const containerElement = document.getElementById(containerId);
+		if (side === "light") {
+			$("#lightSideExtraMoviesContainer").removeClass("is-hidden");
+		} else {
+			$("#darkSideExtraMoviesContainer").removeClass("is-hidden");
+		}
 
 		// Clear the container before appending new content
 		containerElement.innerHTML = "";
@@ -295,8 +300,6 @@ $(".column ").on("click", "img", function () {
 
 	// Show extra movies
 	$("#extras").removeClass("is-hidden");
-	$("#lightSideExtraMoviesContainer").removeClass("is-hidden");
-	$("#darkSideExtraMoviesContainer").removeClass("is-hidden");
 
 	// Show the movie that corresponds to the clicked poster
 	movieId = "movie" + posterClicked.replace("Ep", "");
