@@ -25,18 +25,6 @@ function fetchOmdb() {
 }
 fetchOmdb();
 
-// fetchSwapi("https://swapi.dev/api/films/1");
-// fetchSwapi("https://swapi.dev/api/films/2");
-// fetchSwapi("https://swapi.dev/api/films/3");
-// var omdbtoSwapi = {
-// 	0: 1,
-// 	1: 2,
-// 	2: 3,
-// 	4: 4,
-// 	6: 5,
-// 	5: 6,
-// };
-
 // Function to fetch data from SWAPI
 function fetchSwapi(character) {
 	var swapiUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
@@ -62,7 +50,6 @@ var charLight = document.getElementById("lightcharChoice");
 var charDark = document.getElementById("darkcharChoice");
 let charNames = [];
 const names = ["birth_year", "films", "homeworld", "starships", "vehicles"];
-// const sides = [charLight, charDark];
 
 // ------------------------------------------------------------Function to fetch data from SWAPI---------------------------------------------
 var nameofCharacter;
@@ -129,18 +116,6 @@ async function fetchSwapi(character, side) {
 		charImage = `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
 			/\d+/
 		)}.jpg`;
-
-		// Display character image based on side
-		// displayCharacterImage(
-		//   data.results[0]?.name,
-		//   `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
-		//     /\d+/
-		//   )}.jpg`,
-		//   side
-		// );
-
-		// // Display character details
-		// displayCharacterDetails(data.results[0]?.name, characterDetails, side);
 	} catch (error) {
 		console.error(`Error fetching ${side} side character data:`, error);
 	}
@@ -155,29 +130,26 @@ async function fetchOmdb(character, side) {
 		const data = await response.json();
 		console.log(`${side.toUpperCase()} OMDB Data:`, data);
 
-		// Display extra movies
-		// Will disaply no extra movies
-		$("#extra-movies").empty();
-		var noExtraMovies = `<p>No extra movies</p>`;
+		// Determine the correct container ID based on the side
+		const containerId =
+			side === "light" ? "lightSideExtraMovies" : "darkSideExtraMovies";
+		const containerElement = document.getElementById(containerId);
+
+		// Clear the container before appending new content
+		containerElement.innerHTML = "";
+
+		// Check if there is an error message
 		if (data.Error) {
-			$("#extra-movies").append(noExtraMovies);
+			containerElement.innerHTML = "<p>No extra movies</p>";
 			console.log(data.Error);
+		} else {
+			// Append each movie to the container
+			for (let i = 0; i < data.Search.length; i++) {
+				var extraMovies = `<p class="has-text-left px-6">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p class="has-text-left px-6">Year: ${data.Search[i].Year}</p> <p class="has-text-left px-6">Type: ${data.Search[i].Type}</p> <hr>`;
+				containerElement.insertAdjacentHTML("beforeend", extraMovies);
+				console.log(data);
+			}
 		}
-		// Will disaply extra movies if they exist
-		else {
-		}
-
-		for (let i = 0; i < data.Search.length; i++) {
-			var extraMovies = `<p id="h3" class="has-text-left px-6">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p id="h3" class="has-text-left px-6">Year: ${data.Search[i].Year}</p> <p id="h3" class="has-text-left px-6">Type: ${data.Search[i].Type}</p> <hr>`;
-			$("#extra-movies").append(extraMovies);
-			console.log(data);
-		}
-
-		// Display character image based on side
-		// displayCharacterImage(character, data.Search[0]?.Poster, side);
-
-		// Display character details
-		// displayCharacterDetails(character, names, side ? side.toString() : "");
 	} catch (error) {
 		console.error(
 			`Error fetching ${side} side character data from OMDB:`,
@@ -187,22 +159,6 @@ async function fetchOmdb(character, side) {
 }
 /////--------------------------------------------Display Character Image-----------------------------------------------
 // Function to display character image
-// function displayCharacterImage(selectedCharacter, charImage, side) {
-// 	var characterImage;
-// 	if (movieId == "movie1") {
-// 		characterImage = document.getElementById(`${side}CharacterImage1`);
-// 	} else if (movieId == "movie2") {
-// 		characterImage = document.getElementById(`${side}CharacterImage2`);
-// 	} else if (movieId == "movie3") {
-// 		characterImage = document.getElementById(`${side}CharacterImage3`);
-// 	} else if (movieId == "movie4") {
-// 		characterImage = document.getElementById(`${side}CharacterImage4`);
-// 	} else if (movieId == "movie5") {
-// 		characterImage = document.getElementById(`${side}CharacterImage5`);
-// 	} else if (movieId == "movie6") {
-// 		characterImage = document.getElementById(`${side}CharacterImage6`);
-// 	}
-
 function displayCharacterImage(selectedCharacter, charImage, side) {
 	let movieNumber = movieId.replace("movie", "");
 	let characterImage = document.getElementById(
@@ -221,30 +177,6 @@ function displayCharacterImage(selectedCharacter, charImage, side) {
 	}
 }
 /////--------------------------------------------Display Character Details -----------------------------------------------
-// function displayCharacterDetails(selectedCharacter, details, side) {
-// 	var detailsContainer;
-// 	console.log(movieId);
-// 	if (movieId == "movie1") {
-// 		console.log("Movie 1");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer1`);
-// 	} else if (movieId == "movie2") {
-// 		console.log("Movie 2");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer2`);
-// 	} else if (movieId == "movie3") {
-// 		console.log("Movie 3");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer3`);
-// 	} else if (movieId == "movie4") {
-// 		console.log("Movie 4");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer4`);
-// 	} else if (movieId == "movie5") {
-// 		console.log("Movie 5");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer5`);
-// 	} else if (movieId == "movie6") {
-// 		console.log("Movie 6");
-// 		detailsContainer = document.getElementById(`${side}FactsContainer6`);
-// 	} else {
-// 		console.log("Break");
-// 	}
 function displayCharacterDetails(selectedCharacter, details, side) {
 	let movieNumber = movieId.replace("movie", "");
 	let detailsContainer = document.getElementById(
@@ -362,7 +294,9 @@ $(".column ").on("click", "img", function () {
 	$("#characterChoice .columns").addClass("is-hidden");
 
 	// Show extra movies
-	$("#extra-container").removeClass("is-hidden");
+	$("#extras").removeClass("is-hidden");
+	$("#lightSideExtraMoviesContainer").removeClass("is-hidden");
+	$("#darkSideExtraMoviesContainer").removeClass("is-hidden");
 
 	// Show the movie that corresponds to the clicked poster
 	movieId = "movie" + posterClicked.replace("Ep", "");
