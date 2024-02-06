@@ -187,21 +187,27 @@ async function fetchOmdb(character, side) {
 }
 /////--------------------------------------------Display Character Image-----------------------------------------------
 // Function to display character image
+// function displayCharacterImage(selectedCharacter, charImage, side) {
+// 	var characterImage;
+// 	if (movieId == "movie1") {
+// 		characterImage = document.getElementById(`${side}CharacterImage1`);
+// 	} else if (movieId == "movie2") {
+// 		characterImage = document.getElementById(`${side}CharacterImage2`);
+// 	} else if (movieId == "movie3") {
+// 		characterImage = document.getElementById(`${side}CharacterImage3`);
+// 	} else if (movieId == "movie4") {
+// 		characterImage = document.getElementById(`${side}CharacterImage4`);
+// 	} else if (movieId == "movie5") {
+// 		characterImage = document.getElementById(`${side}CharacterImage5`);
+// 	} else if (movieId == "movie6") {
+// 		characterImage = document.getElementById(`${side}CharacterImage6`);
+// 	}
+
 function displayCharacterImage(selectedCharacter, charImage, side) {
-	var characterImage;
-	if (movieId == "movie1") {
-		characterImage = document.getElementById(`${side}CharacterImage1`);
-	} else if (movieId == "movie2") {
-		characterImage = document.getElementById(`${side}CharacterImage2`);
-	} else if (movieId == "movie3") {
-		characterImage = document.getElementById(`${side}CharacterImage3`);
-	} else if (movieId == "movie4") {
-		characterImage = document.getElementById(`${side}CharacterImage4`);
-	} else if (movieId == "movie5") {
-		characterImage = document.getElementById(`${side}CharacterImage5`);
-	} else if (movieId == "movie6") {
-		characterImage = document.getElementById(`${side}CharacterImage6`);
-	}
+	let movieNumber = movieId.replace("movie", "");
+	let characterImage = document.getElementById(
+		`${side}CharacterImage${movieNumber}`
+	);
 
 	if (!characterImage) {
 		console.error(`Error: #${side}CharacterImage not found in the HTML.`);
@@ -215,30 +221,35 @@ function displayCharacterImage(selectedCharacter, charImage, side) {
 	}
 }
 /////--------------------------------------------Display Character Details -----------------------------------------------
+// function displayCharacterDetails(selectedCharacter, details, side) {
+// 	var detailsContainer;
+// 	console.log(movieId);
+// 	if (movieId == "movie1") {
+// 		console.log("Movie 1");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer1`);
+// 	} else if (movieId == "movie2") {
+// 		console.log("Movie 2");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer2`);
+// 	} else if (movieId == "movie3") {
+// 		console.log("Movie 3");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer3`);
+// 	} else if (movieId == "movie4") {
+// 		console.log("Movie 4");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer4`);
+// 	} else if (movieId == "movie5") {
+// 		console.log("Movie 5");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer5`);
+// 	} else if (movieId == "movie6") {
+// 		console.log("Movie 6");
+// 		detailsContainer = document.getElementById(`${side}FactsContainer6`);
+// 	} else {
+// 		console.log("Break");
+// 	}
 function displayCharacterDetails(selectedCharacter, details, side) {
-	var detailsContainer;
-	console.log(movieId);
-	if (movieId == "movie1") {
-		console.log("Movie 1");
-		detailsContainer = document.getElementById(`${side}FactsContainer1`);
-	} else if (movieId == "movie2") {
-		console.log("Movie 2");
-		detailsContainer = document.getElementById(`${side}FactsContainer2`);
-	} else if (movieId == "movie3") {
-		console.log("Movie 3");
-		detailsContainer = document.getElementById(`${side}FactsContainer3`);
-	} else if (movieId == "movie4") {
-		console.log("Movie 4");
-		detailsContainer = document.getElementById(`${side}FactsContainer4`);
-	} else if (movieId == "movie5") {
-		console.log("Movie 5");
-		detailsContainer = document.getElementById(`${side}FactsContainer5`);
-	} else if (movieId == "movie6") {
-		console.log("Movie 6");
-		detailsContainer = document.getElementById(`${side}FactsContainer6`);
-	} else {
-		console.log("Break");
-	}
+	let movieNumber = movieId.replace("movie", "");
+	let detailsContainer = document.getElementById(
+		`${side}FactsContainer${movieNumber}`
+	);
 
 	if (!detailsContainer) {
 		console.error(`Error: #${side}FactsContainer not found in the HTML.`);
