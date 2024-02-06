@@ -36,7 +36,7 @@ THEN I get a recommendation for another film with that lightside character or da
 
 We created an application that allows the user to choose a film from the Star Wars franchise (Episode 1-6) and is then show a picture of that character, a list of that characters vital stats, and a list of other films that have that character's name in the title. We used two APIs to get the information that we wish to display: [OMDB](https://www.omdbapi.com/) and [SWAPI](https://swapi.dev/).
 
-![Screenshot of the application](./assets/Screenshots/screenshot.png)
+![Screenshot of the application](./assets/images/screenshot.png)
 
 [Link to the deployed application](https://alexahnbaum.github.io/Holocron/)
 
