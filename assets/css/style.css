@@ -21,3 +21,9 @@ html {
 	background-color: #ffe81f;
 	transform: scale(1.1);
 }
+
+.invisible-placeholder {
+	background: transparent;
+	border: none;
+	visibility: hidden;
+}
