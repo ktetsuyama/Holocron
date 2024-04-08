@@ -110,8 +110,7 @@ async function fetchSwapi(character, side) {
 
 		// Storing character details to local storage
 		var storedCharacterData = JSON.parse(
-			localStorage.getItem("character details") || "[]",
-			console.log("Data retrieved from local storage")
+			localStorage.getItem("character details") || "[]"
 		);
 		storedCharacterData.push(characterDetails);
 		localStorage.setItem(
