@@ -303,7 +303,7 @@ async function selectCharacter(selectedCharacter, side) {
 
 ///------------------------------------Event listener that listens for click on movie selector--------------------------------
 var movieId;
-$(".column ").on("click", "img", function () {
+$("#episodeChoice1").on("click", "img", function () {
 	var posterClicked = this.parentNode.id;
 	console.log(posterClicked);
 
