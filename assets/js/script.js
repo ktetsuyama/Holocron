@@ -135,10 +135,18 @@ async function fetchSwapi(character, side) {
 async function fetchOmdb(character, side) {
 	try {
 		const omdbApiKey = "24f8ea01";
-		const omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${omdbApiKey}`;
-		const response = await fetch(omdbUrl);
-		const data = await response.json();
-		console.log(`${side.toUpperCase()} OMDB Data:`, data);
+		let data;
+
+		// Check if data exists before making the fetch request
+		if (character) {
+			const omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${omdbApiKey}`;
+			const response = await fetch(omdbUrl);
+			data = await response.json();
+			console.log(`${side} OMDB Data:`, data);
+		} else {
+			console.log("Character is not defined. Skipping OMDB fetch.");
+			return;
+		}
 
 		// Determine the correct container ID based on the side
 		const containerId =
@@ -155,9 +163,11 @@ async function fetchOmdb(character, side) {
 		containerElement.innerHTML = "";
 
 		// Check if there is an error message
-		if (data.Error) {
+		if (!data || data.Error) {
 			containerElement.innerHTML = "<p>No extra movies</p>";
-			console.log(data.Error);
+			if (data && data.Error) {
+				console.log(data.Error);
+			}
 		} else {
 			// Append each movie to the container
 			for (let i = 0; i < data.Search.length; i++) {
