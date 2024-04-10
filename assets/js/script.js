@@ -63,7 +63,38 @@ async function fetchSwapi(character, side) {
 		)}`;
 		const response = await fetch(swapiUrl);
 		const data = await response.json();
-		console.log(`${side.toUpperCase()} SWAPI Data:`, data);
+		console.log(`${side} SWAPI Data:`, data);
+
+		var previousSearch = $("<button>")
+			.attr("class", "button is-12 is-white is-outlined my-1")
+			.text(character);
+		$("#pastSearches").append(previousSearch);
+
+		// search for a previous character when it's button is clicked
+		previousSearch.click(function () {
+			const previousCharacter = character; // Use the character name from the button text
+			if (previousCharacter) {
+				// Retrieve character details from local storage
+				var storedCharacterData =
+					JSON.parse(localStorage.getItem("character details")) || [];
+				const characterDetails = storedCharacterData.find(
+					(character) => character.name === previousCharacter
+				);
+
+				if (characterDetails) {
+					// Use the retrieved character details
+					const characterDetails = characterData.details;
+					console.log(
+						"Using character details from local storage:",
+						characterDetails
+					);
+				} else {
+					console.error("Character details not found in local storage.");
+				}
+			} else {
+				console.error("Previous character not found.");
+			}
+		});
 
 		// Extract film URLs from SWAPI response
 		const filmUrls = data.results[0]?.films || [];
@@ -112,7 +143,12 @@ async function fetchSwapi(character, side) {
 		var storedCharacterData = JSON.parse(
 			localStorage.getItem("character details") || "[]"
 		);
-		storedCharacterData.push(characterDetails);
+		// Create an object containing both the character name and details
+		var characterData = {
+			name: character,
+			details: characterDetails,
+		};
+		storedCharacterData.push(characterData);
 		localStorage.setItem(
 			"character details",
 			JSON.stringify(storedCharacterData)
@@ -130,6 +166,17 @@ async function fetchSwapi(character, side) {
 		console.error(`Error fetching ${side} side character data:`, error);
 	}
 }
+
+// // create a button for each previously searched character
+// var previousSearch = $("<button>")
+// 	.attr("class", "button is-12 is-primary is-rounded is-outlined my-1")
+// 	.text(character);
+// $("#pastSearches").append(previousSearch);
+
+// // search for a previous character when it's button is clicked
+// previousSearch.click(function () {
+// 	fetchSwapi($(this).text());
+// });
 
 // ---------------------------------------------------------Function to fetch data from OMDB API
 async function fetchOmdb(character, side) {
