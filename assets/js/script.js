@@ -66,7 +66,7 @@ async function fetchSwapi(character, side) {
 		console.log(`${side} SWAPI Data:`, data);
 
 		var previousSearch = $("<button>")
-			.attr("class", "button is-12 is-white is-outlined my-1")
+			.attr("class", "button is-12 is-white is-outlined my-1 mx-1 is-centered")
 			.text(character);
 		$("#pastSearches").append(previousSearch);
 
