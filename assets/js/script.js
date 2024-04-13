@@ -30,7 +30,7 @@ let nameofCharacter;
 let charDetails;
 let characterSide;
 let charImage;
-let movideId;
+let movieId;
 
 $(document).on("click", "#pastSearches button", function () {
 	const previousCharacter = $(this).text(); // Use the character name from the button text
@@ -42,9 +42,24 @@ $(document).on("click", "#pastSearches button", function () {
 			(character) => character.name === previousCharacter
 		);
 
+		// $("#episodeChoice1").on("click", "img", function () {
+		// 	let posterClicked = this.parentNode.id;
+		// 	console.log(posterClicked);
+
+		// const dropdownNumber = posterClicked.replace("Ep", "");
+		const dropdownNumber = [1, 2, 3, 4, 5, 6];
+		const characterNameSearch = (dropdownNumber, char) => {
+			for (i = 0; i <= dropdownNumber.length; i++) {
+				if (dropdownNumber[index] === char) {
+					return index;
+				}
+			}
+			return -1;
+		};
+
 		if (characterData) {
 			// Construct the dropdown ID dynamically
-			const dropdownID = `#${characterData.side}Dropdown${movieId}`;
+			const dropdownID = `#${characterData.side}Dropdown${dropdownNumber}`;
 			console.log("Dropdown ID:", dropdownID);
 
 			// Set the value of the dropdown to the extracted character name
