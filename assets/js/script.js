@@ -25,76 +25,77 @@ function fetchOmdb() {
 }
 fetchOmdb();
 
-// Function to fetch data from SWAPI
-function fetchSwapi(character) {
-	var swapiUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
-		character
-	)}`;
-
-	return fetch(swapiUrl)
-		.then((response) => response.json())
-		.then((data) => {
-			console.log("SWAPI Data:", data);
-
-			displayCharacterImage(
-				data.results[0].name,
-				`https://starwars-visualguide.com/assets/img/characters/${data.results[0].url.match(
-					/\d+/
-				)}.jpg`
-			);
-		});
-}
-
-var charImgtext = document.getElementById("characterImageContainer");
-var charLight = document.getElementById("lightcharChoice");
-var charDark = document.getElementById("darkcharChoice");
-let charNames = [];
-const names = ["birth_year", "films", "homeworld", "starships", "vehicles"];
-
 // ------------------------------------------------------------Function to fetch data from SWAPI---------------------------------------------
-var nameofCharacter;
-var charDetails;
-var characterSide;
-var charImage;
-async function fetchSwapi(character, side) {
+let nameofCharacter;
+let charDetails;
+let characterSide;
+let charImage;
+let movideId;
+
+$(document).on("click", "#pastSearches button", function () {
+	const previousCharacter = $(this).text(); // Use the character name from the button text
+	if (previousCharacter) {
+		// Retrieve character details from local storage
+		const storedCharacterData =
+			JSON.parse(localStorage.getItem("character details")) || [];
+		const characterData = storedCharacterData.find(
+			(character) => character.name === previousCharacter
+		);
+
+		if (characterData) {
+			// Construct the dropdown ID dynamically
+			const dropdownID = `#${characterData.side}Dropdown${movieId}`;
+			console.log("Dropdown ID:", dropdownID);
+
+			// Set the value of the dropdown to the extracted character name
+			console.log(dropdownID);
+			$(dropdownID).val(characterData.name);
+			console.log("Dropdown Value:", characterData.name);
+
+			// Call the selectCharacter function with the updated character name
+			selectCharacter(previousCharacter, characterData.side);
+		} else {
+			console.error("Character details not found in local storage.");
+		}
+	} else {
+		console.error("Previous character not found.");
+	}
+});
+
+async function fetchSwapi(character, side, movieId) {
 	try {
+		// Check if character data exists in local storage
+		const storedCharacterData =
+			JSON.parse(localStorage.getItem("character details")) || [];
+		const characterData = storedCharacterData.find(
+			(charData) => charData.name === character
+		);
+
+		// If character data exists in local storage, use it
+		if (characterData) {
+			console.log(
+				`Character "${character}" found in local storage. Using cached data.`
+			);
+			return {
+				name: characterData.name,
+				details: characterData.details,
+				side: side,
+				image: characterData.image,
+			};
+		}
+
+		// If character data is not in local storage, fetch from SWAPI
 		const swapiUrl = `https://swapi.dev/api/people/?search=${encodeURIComponent(
 			character
 		)}`;
 		const response = await fetch(swapiUrl);
 		const data = await response.json();
-		console.log(`${side} SWAPI Data:`, data);
+		console.log(`line 106 ${side} SWAPI Data:`, data);
 
 		var previousSearch = $("<button>")
 			.attr("class", "button is-12 is-white is-outlined my-1 mx-1 is-centered")
 			.text(character);
 		$("#pastSearches").append(previousSearch);
-
-		// search for a previous character when it's button is clicked
-		previousSearch.click(function () {
-			const previousCharacter = character; // Use the character name from the button text
-			if (previousCharacter) {
-				// Retrieve character details from local storage
-				var storedCharacterData =
-					JSON.parse(localStorage.getItem("character details")) || [];
-				const characterDetails = storedCharacterData.find(
-					(character) => character.name === previousCharacter
-				);
-
-				if (characterDetails) {
-					// Use the retrieved character details
-					const characterDetails = characterData.details;
-					console.log(
-						"Using character details from local storage:",
-						characterDetails
-					);
-				} else {
-					console.error("Character details not found in local storage.");
-				}
-			} else {
-				console.error("Previous character not found.");
-			}
-		});
 
 		// Extract film URLs from SWAPI response
 		const filmUrls = data.results[0]?.films || [];
@@ -139,97 +140,35 @@ async function fetchSwapi(character, side) {
 			films: films.map((film) => film.title),
 		};
 
-		// Storing character details to local storage
-		var storedCharacterData = JSON.parse(
-			localStorage.getItem("character details") || "[]"
-		);
-		// Create an object containing both the character name and details
-		var characterData = {
-			name: character,
+		// Store character details in local storage
+		const charImage = `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
+			/\d+/
+		)}.jpg`;
+
+		// Create new character data object
+		const newCharacterData = {
+			name: data.results[0]?.name,
 			details: characterDetails,
+			side: side,
+			image: charImage,
 		};
-		storedCharacterData.push(characterData);
+
+		// Push new character data to storedCharacterData array
+		storedCharacterData.push(newCharacterData);
+
+		// Store updated character data in local storage
 		localStorage.setItem(
 			"character details",
 			JSON.stringify(storedCharacterData)
 		);
 
-		console.log("Character Details:", characterDetails);
-
-		nameofCharacter = data.results[0]?.name;
-		charDetails = characterDetails;
-		characterSide = side;
-		charImage = `https://starwars-visualguide.com/assets/img/characters/${data.results[0]?.url.match(
-			/\d+/
-		)}.jpg`;
+		return newCharacterData; // Return the newCharacterData object
 	} catch (error) {
 		console.error(`Error fetching ${side} side character data:`, error);
+		return null;
 	}
 }
 
-// // create a button for each previously searched character
-// var previousSearch = $("<button>")
-// 	.attr("class", "button is-12 is-primary is-rounded is-outlined my-1")
-// 	.text(character);
-// $("#pastSearches").append(previousSearch);
-
-// // search for a previous character when it's button is clicked
-// previousSearch.click(function () {
-// 	fetchSwapi($(this).text());
-// });
-
-// ---------------------------------------------------------Function to fetch data from OMDB API
-async function fetchOmdb(character, side) {
-	try {
-		const omdbApiKey = "24f8ea01";
-		let data;
-
-		// Check if data exists before making the fetch request
-		if (character) {
-			const omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${omdbApiKey}`;
-			const response = await fetch(omdbUrl);
-			data = await response.json();
-			console.log(`${side} OMDB Data:`, data);
-		} else {
-			console.log("Character is not defined. Skipping OMDB fetch.");
-			return;
-		}
-
-		// Determine the correct container ID based on the side
-		const containerId =
-			side === "light" ? "lightSideExtraMovies" : "darkSideExtraMovies";
-		const containerElement = document.getElementById(containerId);
-		if (side === "light") {
-			$("#lightSideExtraMoviesContainer").removeClass("is-hidden");
-			$(".invisible-placeholder").addClass("is-hidden");
-		} else {
-			$("#darkSideExtraMoviesContainer").removeClass("is-hidden");
-		}
-
-		// Clear the container before appending new content
-		containerElement.innerHTML = "";
-
-		// Check if there is an error message
-		if (!data || data.Error) {
-			containerElement.innerHTML = "<p>No extra movies</p>";
-			if (data && data.Error) {
-				console.log(data.Error);
-			}
-		} else {
-			// Append each movie to the container
-			for (let i = 0; i < data.Search.length; i++) {
-				var extraMovies = `<p id="h3" class="has-text-left px-2">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p id="h3" class="has-text-left px-2">Year: ${data.Search[i].Year}</p> <p id="h3" class="has-text-left px-2">Type: ${data.Search[i].Type}</p> <hr>`;
-				containerElement.insertAdjacentHTML("beforeend", extraMovies);
-				console.log(data);
-			}
-		}
-	} catch (error) {
-		console.error(
-			`Error fetching ${side} side character data from OMDB:`,
-			error
-		);
-	}
-}
 /////--------------------------------------------Display Character Image-----------------------------------------------
 // Function to display character image
 function displayCharacterImage(selectedCharacter, charImage, side) {
@@ -342,25 +281,76 @@ function displayCharacterDetails(selectedCharacter, details, side) {
 // Function to handle the character selection
 async function selectCharacter(selectedCharacter, side) {
 	try {
-		// Call back fetchSwapi
-		await fetchSwapi(selectedCharacter, side);
+		// Call fetchSwapi
+		const swapiData = await fetchSwapi(selectedCharacter, side);
 
-		// Call back fetchOmdb
+		// Call fetchOmdb
 		await fetchOmdb(selectedCharacter, side);
 
-		// Display character details
-		displayCharacterDetails(nameofCharacter, charDetails, characterSide);
-		//display character image
-		displayCharacterImage(nameofCharacter, charImage, characterSide);
+		// Display character details and image
+		displayCharacterDetails(swapiData.name, swapiData.details, side);
+		displayCharacterImage(swapiData.name, swapiData.image, side);
 	} catch (error) {
 		console.error("Error selecting character:", error);
 	}
 }
 
+// --------------------Function to fetch data from OMDB API
+async function fetchOmdb(character, side) {
+	try {
+		const omdbApiKey = "24f8ea01";
+		let data;
+
+		// Check if data exists before making the fetch request
+		if (character) {
+			const omdbUrl = `https://www.omdbapi.com/?s=${character}&apikey=${omdbApiKey}`;
+			const response = await fetch(omdbUrl);
+			data = await response.json();
+			console.log(`${side} OMDB Data:`, data);
+		} else {
+			console.log("Character is not defined. Skipping OMDB fetch.");
+			return;
+		}
+
+		// Determine the correct container ID based on the side
+		const containerId =
+			side === "light" ? "lightSideExtraMovies" : "darkSideExtraMovies";
+		const containerElement = document.getElementById(containerId);
+		if (side === "light") {
+			$("#lightSideExtraMoviesContainer").removeClass("is-hidden");
+			$(".invisible-placeholder").addClass("is-hidden");
+		} else {
+			$("#darkSideExtraMoviesContainer").removeClass("is-hidden");
+		}
+
+		// Clear the container before appending new content
+		containerElement.innerHTML = "";
+
+		// Check if there is an error message
+		if (!data || data.Error) {
+			containerElement.innerHTML = "<p>No extra movies</p>";
+			if (data && data.Error) {
+				console.log(data.Error);
+			}
+		} else {
+			// Append each movie to the container
+			for (let i = 0; i < data.Search.length; i++) {
+				var extraMovies = `<p id="h3" class="has-text-left px-2">Movie: <a href="https://www.imdb.com/title/${data.Search[i].imdbID}/" target="_blank">${data.Search[i].Title}</a></p><p id="h3" class="has-text-left px-2">Year: ${data.Search[i].Year}</p> <p id="h3" class="has-text-left px-2">Type: ${data.Search[i].Type}</p> <hr>`;
+				containerElement.insertAdjacentHTML("beforeend", extraMovies);
+				console.log(data);
+			}
+		}
+	} catch (error) {
+		console.error(
+			`Error fetching ${side} side character data from OMDB:`,
+			error
+		);
+	}
+}
+
 ///------------------------------------Event listener that listens for click on movie selector--------------------------------
-var movieId;
 $("#episodeChoice1").on("click", "img", function () {
-	var posterClicked = this.parentNode.id;
+	let posterClicked = this.parentNode.id;
 	console.log(posterClicked);
 
 	// Hide all movies
