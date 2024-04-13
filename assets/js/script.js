@@ -42,10 +42,6 @@ $(document).on("click", "#pastSearches button", function () {
 			(character) => character.name === previousCharacter
 		);
 
-		// $("#episodeChoice1").on("click", "img", function () {
-		// 	let posterClicked = this.parentNode.id;
-		// 	console.log(posterClicked);
-
 		// const dropdownNumber = posterClicked.replace("Ep", "");
 		const dropdownNumber = [1, 2, 3, 4, 5, 6];
 		const characterNameSearch = (dropdownNumber, char) => {
