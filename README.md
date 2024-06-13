@@ -38,7 +38,7 @@ We created an application that allows the user to choose a film from the Star Wa
 
 ![Screenshot of the application](./assets/images/screenshot.png)
 
-[Link to the deployed application](https://alexahnbaum.github.io/Holocron/)
+[Link to the deployed application](https://ktetsuyama.github.io/Holocron/)
 
 ## Credits
 
